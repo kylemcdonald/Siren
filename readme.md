@@ -23,10 +23,10 @@ There is also an `phrases.csv` file that describes which phrase is matched to ea
 After installing Anaconda:
 
 ```
-conda create -n siren python=3.7
+conda create -n siren python=3.9
 conda activate siren
 git clone https://github.com/kylemcdonald/python-utils.git utils
-pip install ffmpeg-python opencv-python-headless pillow
+conda install -y umap-learn jupyterlab ffmpeg-python pillow opencv matplotlib pandas librosa
 ```
 
 I was also testing the Rapids implementation of UMAP:
