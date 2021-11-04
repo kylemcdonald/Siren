@@ -13,8 +13,9 @@ function load(fn) {
 	output = JSON.parse(file);
 	rows = output['data'].length;
 	framerate = output['framerate'];
-	const channels = output['data'][0].length;
-	Max.post(`Loaded metadata: ${rows} rows x ${channels} channels @ ${framerate} fps`);
+	const fixtures = output['data'][0].length;
+	const channels = output['data'][0][0].length;
+	Max.post(`Loaded metadata: ${rows} rows x ${fixtures} fixtures x ${channels} channels @ ${framerate} fps`);
 }
 
 Max.addHandler('time', (time) => {
