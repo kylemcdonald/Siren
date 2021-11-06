@@ -11,7 +11,7 @@ function list() {
 		r[j] = arguments[i];
 		g[j] = arguments[i+1];
 		b[j] = arguments[i+2];
-		i += 6;
+		i += 3;
 		j += 1;
 	}
 	

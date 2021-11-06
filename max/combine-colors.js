@@ -2,17 +2,7 @@ inlets = 1;
 outlets = 1;
 
 var cache = null;
-
-var state = {
-	lp_in: 0.0,
-	lp_out: 0.0,
-	ann_in: 0.5,
-	ann_out: 0.5,
-	unann_in: 0.5,
-	unann_out: 0.5,
-	white: 0,
-	b_out: 255
-};
+var state = null;
 
 var channels_per_fixture = 3;
 var outer_fixtures = 8;
@@ -23,7 +13,11 @@ var inner_channels = inner_fixtures * channels_per_fixture;
 var total_channels = outer_channels + inner_channels;
 
 function list() {
+	if (state == null) {
+		return;
+	}
 	var out = new Array();
+
 	var c = 0;
 	while(c < outer_channels) {
 		out[c] = arguments[c] * state.ann_out +
@@ -36,7 +30,7 @@ function list() {
 		c++;
 	}
 
-	if (cache == null) {
+	if (cache == null || isNaN(cache[0])) {
 		cache = new Array();
 		for (i = 0; i < out.length; i++) {
 			cache[i] = out[i];
@@ -61,10 +55,16 @@ function list() {
 		out[i] = Math.max(out[i], state.white);
 		out[i] = Math.min(255, out[i]) | 0;
 	}
+	
 	outlet(0, out);
 }
 
 function anything(val) {
+	if (state == null) {
+		state = {};
+	}
 	state[messagename] = val;
 	//post(messagename, val);
 }
+
+outlet(0, 'bang');
