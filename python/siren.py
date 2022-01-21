@@ -83,9 +83,20 @@ def build_targets(annotation_fn, y, sr, amp, gloss=True):
 
     return units, singing, themes, unit_position
 
-def to_indices(labels):
-    unique_labels = sorted(list(set(labels)))
-    label_to_index = {label:i for i,label in enumerate(unique_labels)}
-    index_to_label = {i:label for i,label in enumerate(unique_labels)}
-    indices = [label_to_index[label] for label in labels]
-    return indices, label_to_index, index_to_label
+# original version
+# def to_indices(labels):
+#     unique_labels = sorted(list(set(labels)))
+#     label_to_index = {label:i for i,label in enumerate(unique_labels)}
+#     index_to_label = {i:label for i,label in enumerate(unique_labels)}
+#     indices = [label_to_index[label] for label in labels]
+#     return indices, label_to_index, index_to_label
+
+# preserves "unknown" categories as -1
+def to_indices(arr, unknown=''):
+    unique = np.unique(arr)
+    if unknown in unique:
+        unique = [e for e in unique if e != unknown]
+    mapping = {e:i for i,e in enumerate(unique)}
+    mapping[unknown] = -1
+    mapped = [mapping[e] for e in arr]
+    return np.asarray(mapped)

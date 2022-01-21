@@ -5,10 +5,11 @@ const fs = require('fs');
 
 var output, rows, framerate;
 
-Max.post(`Starting the ${path.basename(__filename)} script`);
-		
+Max.post(`Starting script: ${path.basename(__filename)}`);
+load(process.argv.pop());
+
 function load(fn) {
-	Max.post(`Loading the ${fn} design`);
+	Max.post(`Loading design: ${fn}`);
 	const file = fs.readFileSync(fn, 'utf8')
 	output = JSON.parse(file);
 	rows = output['data'].length;

@@ -38,11 +38,30 @@ conda create -n rapids-21.06 -c rapidsai -c nvidia -c conda-forge \
 
 ### Running
 
-1. Run `Combine All Data.ipynb` to produce the per-file lighting design.
+1. Run `Combine All Data.ipynb` to produce the per-file lighting design (skip to "jump to this cell" if cached data is available).
 2. Run `Parse Ableton.ipynb` to combine all the per-file lighting designs into one larger lighting design.
 
 To edit the lighting design, change `get_lighting()` in `Combine All Data.ipynb` then re-run the last cell and re-run `Parse Ableton.ipynb`.
 
+### Updating for a new lighting configuration
+
+1. Update `python/settings.json` with the correct fixture totals and re-run the notebooks.
+2. Update the Super Sweet to have the correct number of output channels (in "Mapping" settings).
+3. Change `udpsend.js` to specify the correct number of total channels.
+4. Change `expand.js` to match RGB colors to the correct mapping for the fixtures.
+5. Change `combine-colors.js` to specify the total inner and outer fixtures.
+
+### Fixture notes
+
+#### Invisible Dog
+
+- 12x local lights
+- 8x global lights
+
+#### Mass MoCA
+
+- 20x CubeECHO: red, green, blue, white, amber, uv
+- 6x ETC Selador Vivid R 11 inch: red, red-orange, amber, green, cyan, blue, uv, dimmer
 
 ## Max
 
