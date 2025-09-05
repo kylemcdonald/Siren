@@ -1,8 +1,8 @@
 # Siren
 
-"Siren" (2021) by Annie Lewandowski and Kyle McDonald, with set designer Amy Rubin.
+"Siren" (2021) by Annie Lewandowski and Kyle McDonald, with scenic designer Amy Rubin.
 
-"In Siren – Listening to Another Species on Earth, composer and performer Annie Lewandowski, artist and coder Kyle McDonald, and set designer Amy Rubin explore humpback whale song in a meeting of intelligences – humpback whale, human, and artificial. Their visually and sonically immersive piece reveals the wounded flourishing of the humpback whale, a species who continues to sing even as the menace of entanglement threatens its very existence. Siren celebrates the beauty and conservation legacy of the multi-platinum record Songs of the Humpback Whale on its 50th anniversary, while providing a window into the creative minds of our ancient mammalian relative in a contemporary experience of its ever-evolving song."
+"In Siren – Listening to Another Species on Earth, composer and performer Annie Lewandowski, artist and coder Kyle McDonald, and scenic designer Amy Rubin explore humpback whale song in a meeting of intelligences – humpback whale, human, and artificial. Their visually and sonically immersive piece reveals the wounded flourishing of the humpback whale, a species who continues to sing even as the menace of entanglement threatens its very existence. Siren celebrates the beauty and conservation legacy of the multi-platinum record Songs of the Humpback Whale on its 50th anniversary, while providing a window into the creative minds of our ancient mammalian relative in a contemporary experience of its ever-evolving song."
 
 This repository includes the code for producing the lighting design for the installation.
 
@@ -72,3 +72,8 @@ To edit the lighting design, change `get_lighting()` in `Combine All Data.ipynb`
     - `deinterleave.js` converts 6-channel DMX colors to a multi-plane format that is appropriate for a Jitter matrix.
     - `lowpass.js` for "blurring" the lighting output in a way that peaks reset the lighting, then slowly fade out.
 - `random-lights.py` example of sending DMX over serial using Python. Useful for testing that the DMX device works.
+
+### Max controls
+
+- b_out: overall brightness of outer lights
+- w_out: minimum white level for all lights
